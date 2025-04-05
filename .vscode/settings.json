@@ -1,0 +1,39 @@
+{
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "launch": {
+        "configurations": [
+            {
+                "name": "Debug All Pytest Tests",
+                "type": "debugpy",
+                "request": "launch",
+                "module": "pytest",
+                "args": [
+                    "." // Or specify a subdirectory like "tests"
+                ],
+                "justMyCode": true,
+                "console": "integratedTerminal",
+                "purpose": [
+                    "debug-test"
+                ]
+            },
+            {
+                "name": "Debug Single Test",
+                "type": "debugpy",
+                "request": "launch",
+                "module": "pytest",
+                "args": [
+                    "test_signature_demo.py::test_verify_signature_valid" // Replace with actual test path and name
+                ],
+                "justMyCode": true,
+                "console": "integratedTerminal",
+                "purpose": [
+                    "debug-test"
+                ]
+            }
+        ]
+    }
+}
