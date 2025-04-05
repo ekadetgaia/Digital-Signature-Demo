@@ -41,36 +41,5 @@ def main():
     else:
         print("❌ Signature is invalid. Message may be tampered.")
 
-
-def crypto_game():
-    print("\n--- Crypto Game ---")
-    private_key, public_key = generate_keys()
-    messages = [
-        b"Transfer $1000 to Alice",
-        b"Transfer $500 to Bob",
-        b"Transfer $2000 to Charlie",
-    ]
-    correct_message = random.choice(messages)
-    signature = sign_message(private_key, correct_message)
-
-    tampered_message = random.choice(messages)
-    if tampered_message == correct_message:
-        tampered_message = b"Transfer $3000 to Eve"
-
-    print("Message to verify:", tampered_message.decode())
-    print("Signature (base64):", base64.b64encode(signature).decode())
-
-    user_input = (
-        input("Is the signature valid for this message? (yes/no): ").strip().lower()
-    )
-    is_valid = verify_signature(public_key, tampered_message, signature)
-
-    if (is_valid and user_input == "yes") or (not is_valid and user_input == "no"):
-        print("✅ Correct! You identified the authenticity correctly.")
-    else:
-        print("❌ Incorrect. Better luck next time!")
-
-
 if __name__ == "__main__":
     main()
-    crypto_game()
