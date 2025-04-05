@@ -41,5 +41,6 @@ def main():
     else:
         print("❌ Signature is invalid. Message may be tampered.")
 
+
 if __name__ == "__main__":
     main()
